@@ -8,6 +8,10 @@ public class Main {
     static int ID_index =-1;
     static Scanner input = new Scanner(System.in);
 
+    static Student student = new Student();
+    static Module module = new Module();
+
+
     public static void menu(){
         ID_index = -1;
         int option ;
@@ -23,6 +27,7 @@ public class Main {
             System.out.println("6. Load student details from the file");
             System.out.println("7. view the list of student based on their names");
             System.out.println("8. extra controls");
+
             try {
                 option = input.nextInt();           // Read user input to perform an action.
 
@@ -49,7 +54,7 @@ public class Main {
                         System.out.println("Invalid option. Please try again.\n");
                         break;
                 }
-                break;
+//                break;
 
             } catch (InputMismatchException e) {
                 System.out.println("Enter a valid number.\n");
@@ -70,7 +75,6 @@ public class Main {
     }
 
     public static void register(){
-
             try {
                 System.out.print("Ender the seat number  (1 - 100): ");
                 int seat_number= input.nextInt();
@@ -83,11 +87,25 @@ public class Main {
                         System.out.println("Student ID is already there in seat "+ (ID_index+1));
                     }
                     else{
-                        seat[seat_number - 1]= ID_num;
+
+                        char First_letter = ID_num.charAt(0);
+                        int total = ID_num.length();
+
+                        if (First_letter  == 'w' && total== 8) {
+
+                            student.setIndex(seat_number - 1);
+                            student.ID(ID_num);
+
+                            seat[seat_number - 1]= "B";
+                        }
+                        else {
+                            System.out.println("check the ID for correction");
+                            System.out.println("e.g : w1234567 ");
+                        }
                     }
                                                                             //print seat
-                    for(int i = 0 ; i<seat.length ; i++){
-                        System.out.print(seat[i]);
+                    for (String s : seat) {
+                        System.out.print(s);
                         System.out.print(" ");
                     }
 
@@ -110,12 +128,13 @@ public class Main {
 
         if (check_ID(ID)){
             seat[ID_index]= "e";
+            Student.Student_ID[ID_index]=" - ";
+            Student.Student_Name[ID_index] = null;
             System.out.println("Successfully deleted");
         }
         else {
             System.out.println("ID is not there");
         }
-
          menu();
     }
 
@@ -133,8 +152,8 @@ public class Main {
         menu();
     }
     public static boolean check_ID(String ID){
-        for (int i=0 ;i< seat.length ; i++) {
-            if (seat[i].equals(ID)) {
+        for (int i = 0; i< Student.Student_ID.length ; i++) {
+            if (Student.Student_ID[i].equals(ID)) {
                 ID_index = i;
                 return true;
             }
@@ -144,22 +163,80 @@ public class Main {
 
 
     public static void extra_controls(){
-        System.out.println("extra controls");
+
+        String option ;
+        while (true) {
+
+        System.out.println("\n\nextra controls");
         System.out.println("**************");
 
         System.out.println("a. Add student name");
         System.out.println("b. Module marks");
-//        System.out.println("c. Delete student");
-//        System.out.println("d. Find student");
+        System.out.println("c. Delete student");
+        System.out.println("d. Find student");
+        System.out.println("Enter \"#\" fpr main menu");
 
 
+            try {
+                 option = input.next();           // Read user input to perform an action.
+
+                switch (option) {
+                    case "a":
+                        student.Name();
+                        break;
+
+                    case "b":
+                        module.marks();
+                        break;
+
+                    case "c":
+                        c_summary();
+                        up_fourty();
+                        break;
+
+                    case "#":
+                        menu();
+                        break;
+
+                    default:
+                        System.out.println("Invalid option. Please try again.\n");
+                        break;
+                }
+
+            } catch (InputMismatchException e) {
+                System.out.println("Enter a valid number.\n");
+                input.nextLine();           // Clears the invalid input entered by user.
+            }
+        }
+    }
+
+    public static void c_summary(){
+
+        int count = 0;
+
+        for (int i = 0 ; i<seat.length ; i++){
+            if (seat[i].equals("B")){
+                count = count +1 ;
+            }
+        }
+        System.out.println("\nTotal no of students registed : " + count);
+
+    }
+
+    public static void up_fourty(){
+        int count = 0;
+        for (int i = 0 ; i<100 ; i++){
+            if (40<module.Marks_1[i]&& 40<module.Marks_2[i] && 40<module.Marks_3[i]){
+                count = count +1 ;
+            }
+        }
+        System.out.println("\nTotal no of students who has up to 40 marks : " + count);
     }
 
     public static void main(String[] args) {
         for (int i = 0 ; i<seat.length ; i++){
             seat[i] = "e";
         }
-
         menu();
     }
 }
