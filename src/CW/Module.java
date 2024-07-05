@@ -1,79 +1,72 @@
 package CW;
 
-import java.util.Scanner;
-
 public class Module {
-    static int [] Marks_1 = new int[100];
-    static int [] Marks_2 = new int[100];
-    static int [] Marks_3 = new int[100];
-    static int [] Average  = new int[100];
-    static Scanner input = new Scanner(System.in);
 
-    Student student = new Student();
-    static Main main = new Main();
+    private double maths = -1 ;
+    private double csf = -1 ;
+    private double sd1 = -1 ;
+    private double Total;
+    private double Average;
+    private String Grade;
 
-    public static void marks(){
+    public Module(double maths, double csf, double sd1, double total, double average, String grade) {
+        this.maths = maths;
+        this.csf = csf;
+        this.sd1 = sd1;
+        Total = total;
+        Average = average;
+        Grade = grade;
+    }
 
-        int mark1,mark2 ,mark3 ;
+    public double getMaths() {
+        return maths;
+    }
 
-        System.out.print("Ender the student ID  : ");
-        String ID= input.next();
+    public void setMaths(double maths) {
+        this.maths = maths;
+    }
 
-        if (main.check_ID(ID)){
+    public double getCsf() {
+        return csf;
+    }
 
-            while (true){
-                System.out.print("Ender the the Marks 1 : ");
-                mark1= input.nextInt();
+    public void setCsf(double csf) {
+        this.csf = csf;
+    }
 
-                if (0< mark1 && mark1<100  ){
-                    Marks_1[main.ID_index]= mark1;
-                    break;
-                }
-                else {
-                    System.out.print("Mark 1 should between 1-100 ");
-                }
-            }
+    public double getSd1() {
+        return sd1;
+    }
 
-            while (true){
-                System.out.print("Ender the the Marks 2 : ");
-                mark2= input.nextInt();
+    public void setSd1(double sd1) {
+        this.sd1 = sd1;
+    }
 
-                if (0< mark2 && mark2<100 ){
-                    Marks_2[main.ID_index]= mark2;
-                    break;
-                }
-                else {
-                    System.out.print("Mark 1 should between 1-100 ");
-                }
-            }
+    public double getTotal() {
+        return Total;
+    }
 
-            while (true){
-                System.out.print("Ender the the Marks 3 : ");
-                mark3= input.nextInt();
+    public void setTotal(double total) {
+        Total = total;
+    }
 
-                if (0< mark3 && mark3<100 ){
-                    Marks_3[main.ID_index]= mark3;
-                    break;
-                }
-                else {
-                    System.out.print("Mark 1 should between 1-100 ");
-                }
-            }
+    public double getAverage() {
+        return Average;
+    }
 
-            int average = (mark1+mark2+mark3)/3;
+    public void setAverage(double average) {
+        Average = average;
+    }
 
-            Average[main.ID_index]=average;
+    public String getGrade() {
+        return Grade;
+    }
 
-
-            System.out.println(Marks_1[main.ID_index]);
-            System.out.println(Marks_2[main.ID_index]);
-            System.out.println(Marks_3[main.ID_index]);
-            System.out.println(Average[main.ID_index]);
-        }
-        else {
-            System.out.print("That Id not in the database");
-        }
-
-        main.extra_controls();
+    public void setGrade(String grade) {
+        Grade = grade;
     }
 }
+
+
+
+
