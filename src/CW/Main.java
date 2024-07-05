@@ -327,7 +327,7 @@ public class Main {
 
             //Starring the index value from
 
-            while (fileScanner.hasNextLine() && checkAvailableSeats() < 100) {
+            while (fileScanner.hasNextLine() && checkAvailableSeats() <= 100) {
                 String line = fileScanner.nextLine();
                 String[] data = line.split(",");
 
