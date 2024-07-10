@@ -368,7 +368,7 @@ public class Main {
                 ID[ID_index]="-";
 
                 //Replacing the student name and student id in the student object  in the respective slot with "-" symbol
-                students[ID_index].setID("-");
+                students[ID_index].setStudent_ID("-");
                 students[ID_index].setS_Name("-");
 
                 //Resetting the module marks,total,average to zero in the repective index

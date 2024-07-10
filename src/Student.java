@@ -1,12 +1,12 @@
 public class Student {
     //declaring private variable to store the student name and student id of the university enrollers
-    private String ID;
+    private String Student_ID ;
     private String S_Name ;
 
     //Constructor to take the university student name and student id as arguments
     public Student( String student_ID,String s_Name) {
         S_Name = s_Name;
-        ID =student_ID;
+        Student_ID = student_ID;
     }
 
     //Getter method to get the student name
@@ -20,12 +20,12 @@ public class Student {
     }
 
     //Getter method to get the student id
-    public String getID() {
-        return ID;
+    public String getStudent_ID() {
+        return Student_ID;
     }
 
     // Setter method to include the student id
-    public void setID(String ID) {
-        this.ID = ID;
+    public void setStudent_ID(String student_ID) {
+        Student_ID = student_ID;
     }
 }
